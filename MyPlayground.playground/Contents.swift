@@ -42,7 +42,7 @@ print(daysPassed)
 Exercise 2.5
 Using the print() function, print the phrases like: "My age is <...> years. After 10 years, I will be <...> years old. From the moment of my birth day have passed approximately <...>" . (Symbols (<...>) must be replaced with variable values !)
 */
-print ("My age is \(myAge) years. After 10 years, I will be \(myAgeInTenYears) years old. From the moment of my birth day have passed approximetely \(Float(myAge)*Float(daysInYear)) days.")
+print ("My age is \(myAge) years. After 10 years, I will be \(myAgeInTenYears) years old. From the moment of my birth day have passed approximetely \(daysPassed) days.")
 
 // Lesson 2
 /*
@@ -84,16 +84,82 @@ You need to buy several new MacBook Pro, each cost 1000 EUR.
 If you are buying 5 and more, with discount it will cost you 900 each! If you are buying 10 and more with discount it will cost you 850 each! Create if-else statements to check Conditions of buying in different amount!
 print("new: \(qty) MacBook Pro with the price of: \(price) EUR, will cost you: \(totalSum) Eur")
 */
-/*
-var macBookCount = 2
-var price = 1000 * macBookCount
-var totalSum = 
-if macBookCount  < 5 {
-    print ("Each MacBook cost 1000 EUR")
-}else if macBookCount >= 5 && macBookCount < 10{
-    print ("Each MacBook cost 900 EUR")
-}else if macBookCount >= 10{
-    print ("Each MacBook cost 850 EUR")
+var macBookCount = 9
+var price = 1000
+
+if macBookCount >= 10 {
+    price -= 150
+} else if macBookCount >= 5 {
+    price -= 100
 }
+var totalSum = macBookCount * price
 print ("New \(macBookCount) MacBook Pro with the price of: \(price) EUR, will cost you: \(totalSum) EUR")
 
+/*
+ Ex4:
+ Create String userInputAge and put value "33a" and convert to Int to make Fatal error: Unexpectedly found nil while unwrapping an Optional value!
+ Fix this Fatal error inside the if-else statements to print whenever this age can be converted to Int or not!
+ */
+
+let userInputAge = "32a"
+if Int(userInputAge) != nil {
+    print("Good to go")
+} else {
+    print ("Can't convert this string to integer.")
+}
+
+/*
+ Ex5:
+ Calculate the number of years, months, days have passed from you birthday to current date.
+ print("Total years: \(totalYearsFromBirth) , total months: \(totalMonthFromBirth), total days: \(totalDaysFromBirth) have passed")
+ */
+let calendar = Calendar.current
+let components = DateComponents(calendar: .current, timeZone: .current, year: 1996, month: 03, day:28)
+let birth = calendar.date(from:components)
+let today = Date()
+
+func calcFromBirth(startDate: Date, endDate: Date, check: String) -> Int {
+    let calendar = Calendar.current
+    switch check {
+    case "day":
+        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+        return components.day!
+    case "year":
+        let components = calendar.dateComponents([.year], from: startDate, to: endDate)
+        return components.year!
+    case "month":
+        let components = calendar.dateComponents([.month], from: startDate, to: endDate)
+        return components.month!
+    default:
+        print("wrong check keyword")
+        return 0
+    }
+}
+
+let totalYearsFromBirth = calcFromBirth(startDate: birth!, endDate: today, check: "year")
+let totalMonthsFromBirth = calcFromBirth(startDate: birth!, endDate: today, check: "month")
+let totalDaysFromBirth = calcFromBirth(startDate: birth!, endDate: today, check: "day")
+
+print("Total years: \(totalYearsFromBirth) , total months: \(totalMonthsFromBirth), total days: \(totalDaysFromBirth) have passed")
+
+/*
+ Ex6:
+ Use Exercise 5 monthOfBirth to calculate in which quarter of the year you were born.
+ Use switch case to print("I was born in the ... quarter")
+ */
+let monthOfBirth = components.month!
+
+switch monthOfBirth {
+case 1...3:
+    print("I was born in the first quarter")
+case 4...6:
+    print("I was born in the second quarter")
+case 7...9:
+    print("I was born in the third quarter")
+case 9...12:
+    print("I was born in the fourth quarter")
+default:
+break
+
+
+}
