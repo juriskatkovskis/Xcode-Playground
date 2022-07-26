@@ -173,19 +173,16 @@ break
  print("Amount of income after \(period) years will be \(profit) Eur. My total deposit will be \(deposit) Eur !")
  */
 
-let depositAtStart = 500_000
-let rate = 0.01 // 1% percent rate per year
-var depositWithRate = Double (depositAtStart) * Double (rate)
-    print("\(depositWithRate)")
-let period = [1, 2, 3, 4, 5]
-for _ in period{
-    // not finished
-    
-    
-    
+var deposit: Double = 500_000
+let depositPeriod: Int = 5
+let profit: Double = 1.15 // 15% interest rate per year
+
+for _ in 1...depositPeriod{
+    deposit *= profit
 }
-
-
+print("Amount of income after \(depositPeriod) years will be \(profit) Eur. My total deposit will be \(deposit) Eur !")
+    
+    
 /*
  Exercise 2
  Create an integer array with any set of numbers and  print("My even numbers are: \(evenNumber)")
@@ -200,18 +197,35 @@ print("My even numbers are: \(evenNumber)")
  Exercise 3
  Inside the for loop create randomNumber for the random Int calculation. Calculate and print("Number 5 will be after \(counter) shuffles"). Don't forget to make a break inside the if statement.
  */
-//not sure about this
 
-var counter = Int.random(in: 0..<5)
-while true {
-    print("Number 5 will be after \(counter) shuffles.")
-    counter += 1
-    if counter == 5 {
-        break
-    }
+var num = 0
+var shuflesCount = 0
+while(num != 5) {
+    num = Int.random(in: 1...10)
+    shuflesCount += 1
 }
+("Number 5 will be after \(shuflesCount) shuffles")
 
 /*
  Exercise 4
  A bug is climbing to a 10-meter electric post. During the day, bug can climb two meters, during the night she slides down to 1 meter. Determine with the help of the cycle how many days bug will climb on the top of the post. Think about which loop to use in which situation. print("bug will spend \(numberOfDays)) to reach top of the post")
  */
+
+let height = 10
+let progressPerDay = 2
+let progressPerNight = -1
+
+var progress = 0
+var daysSpent = 0
+
+for _ in 1... {
+    
+    progress += progressPerDay
+    daysSpent += 1
+    
+    if progress >= height {
+        break
+    }
+    progress += progressPerNight
+}
+print ("Bug will spend \(daysSpent) days to reeach top of the post")
