@@ -229,3 +229,155 @@ for _ in 1... {
     progress += progressPerNight
 }
 print ("Bug will spend \(daysSpent) days to reeach top of the post")
+
+
+
+//Lesson 4
+/*
+Exercise 1
+Declare myTeam as Girls or Boys.
+Create a Dictionary resultsOfGames where Key contains teamName as String and Value of two [String] results.
+Print the output, for example:
+Girls against Brooklyn Nets scored - 99:89
+Girls against Brooklyn Nets scored - 109:99
+Girls against Dallas Mavericks scored - 87:93
+Girls against Dallas Mavericks scored - 104:97
+Girls against Washington Wizards scored - 117:112
+Girls against Washington Wizards scored - 107:122
+*/
+
+let myTeam: String = "Boys"
+var resultsOfGames = [
+    "Barcelona" : ["3-1", "4-1"],
+    "Real Madrid" : ["2-1", "1-0"],
+    "Chelsea" : ["5-1", "2-3"]
+]
+for (team, score) in resultsOfGames {
+    for separateValue in 0..<score.count {
+        print("\(myTeam) against \(team) scored - \(score[separateValue])")
+    }
+}
+
+/*
+ Exercise 2
+ Declare an Array of Int. In the wallet you have only 1x by 5 - 500 EUR.
+ Create a func to calculateCash sum of your cash inside your wallet.
+ */
+var cashInWallet = [5, 10, 20, 50, 100, 200, 500]
+var total = 0
+
+func calculateCashSum(cashInWallet: [Int]) -> Int{
+    for cash in cashInWallet {
+        total += cash
+    }
+    return total
+}
+print("Total cash in wallet: \(calculateCashSum(cashInWallet: cashInWallet))")
+
+
+/*
+ Exercise 3
+ Create a func isEvenNumber to calculate if a number is odd or even. If the number is even func should return true.
+ Run the func.
+ */
+
+func isEvenNumber(number: Int) -> Bool{
+    if number % 2 == 0 {
+        return true
+    }
+    return false
+}
+print("is the number even: \(isEvenNumber(number: 4))")
+print("is the number even: \(isEvenNumber(number: 3))")
+
+/*
+ Exercise 4
+ Create a func createArray to calculate some number from start: to end: than return Int array.
+ Declare array and put createArray(from: 1, to: 100)
+ print(array)
+ */
+
+func createArray(from: Int, to: Int) -> [Int]{
+    var newArray: [Int] = []
+    for arrayElement in from...to{
+        newArray.append(arrayElement)
+    }
+    return newArray
+}
+var array = createArray(from: 1, to: 100)
+print("Array: \(array)")
+
+/*
+ Exercise 5
+ Create for loop.
+ Use array result from Exercise 4.
+ Use isEvenNumber from Exercise 3.
+ Calculate and remove isEvenNumber using if array.firstIndex of number, inside the if array.remove at index.
+ It should be 1/2 of createArray and started from [1,3,5.....
+ */
+for number in array {
+    if let numberToCheck = array.firstIndex(of: number) {
+        if isEvenNumber(number: array[numberToCheck]){
+            array.remove(at: numberToCheck)
+        }
+    }
+}
+print("The created array, even numbers remove: \(array)")
+
+// Lesson 5
+
+/*
+Exercise 1
+1.Create new Class Orange(Fruit). Inside the Class declare:
+     color = ""
+     teste = ""
+     weight = 0.0
+ 2.Make Class example from Orange Class and named it as someOrange.
+ 3.Give specific value for:
+     color = "Orange"
+     taste = "Sweet"
+     weight = 0.66
+ 4.print("My \(someOrange.weight) kg orange has \(someOrange.color) color and \(someOrange.taste) taste")
+*/
+
+class Orange {
+    var color = ""
+    var taste = ""
+    var weight = ""
+}
+let someOrange = Orange()
+someOrange.color = "Orange"
+someOrange.taste = "Sweet"
+someOrange.weight = "0.66"
+
+print("My \(someOrange.weight) kg orange has \(someOrange.color) color and \(someOrange.taste) taste")
+
+/*
+Exercise 2
+1.Create new Parent(Superclass) Class Figure. Inside the Class declare:
+         height: Float
+         width: Float
+         radius: Float
+         square: Float
+         perimeter: Float
+ 2. init(height: Float, width: Float) and 2 methods:
+         func squareOfFigure() -> Float { return square }
+         func perimeterOfFigure() -> Float { return perimeter }
+ 3.Create new Child(Subclass) Rectangle of Paret Class Figure
+ 3.Inside Rectangle override func squareOfFigure() -> Float to calculate and return square and override func perimeterOfFigure() -> Float to calculate and return perimeter !
+ 4.Inside Rectangle make a func description() where we can print("Rectangle area is: \(squareOfFigure()), and perimeter Of Figure is: \(perimeterOfFigure())")
+ 5.Make Class example from Rectangle Class and named it as myRectangle and give a value as you want for height and width.
+ 6.Finally call myRectangle.description()
+*/
+
+
+
+
+ 
+
+
+
+
+
+
+
